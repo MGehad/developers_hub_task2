@@ -60,9 +60,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 child: BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
                     if (state is AuthError) {
-                      String error = "";
-
-                      error = state.message;
+                      String error = state.message;
 
                       ShowSnackBar.show(
                         context,
@@ -73,6 +71,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => HomeView()),
+                      );
+                    } else if (state is AuthLoading) {
+                      ShowSnackBar.show(
+                        context,
+                        message: "Signing in...",
+                        color: Colors.blue,
                       );
                     }
                   },
