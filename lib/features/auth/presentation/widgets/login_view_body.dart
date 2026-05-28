@@ -1,13 +1,13 @@
-import 'package:developers_hub_task1/core/utils/functions/show_snack_bar.dart';
-import 'package:developers_hub_task1/core/utils/functions/validation_settings.dart';
-import 'package:developers_hub_task1/core/widgets/custom_input_field.dart';
-import 'package:developers_hub_task1/features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
-import 'package:developers_hub_task1/features/auth/presentation/views/forget_password_view.dart';
-import 'package:developers_hub_task1/features/auth/presentation/views/sign_up_view.dart';
-import 'package:developers_hub_task1/features/auth/presentation/widgets/auth_button.dart';
-import 'package:developers_hub_task1/features/auth/presentation/widgets/auth_link_text.dart';
-import 'package:developers_hub_task1/features/auth/presentation/widgets/password_field.dart';
-import 'package:developers_hub_task1/features/home/presentation/views/home_view.dart';
+import 'package:developers_hub_task2/core/utils/functions/show_snack_bar.dart';
+import 'package:developers_hub_task2/core/utils/functions/validation_settings.dart';
+import 'package:developers_hub_task2/core/widgets/custom_input_field.dart';
+import 'package:developers_hub_task2/features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
+import 'package:developers_hub_task2/features/auth/presentation/views/forget_password_view.dart';
+import 'package:developers_hub_task2/features/auth/presentation/views/sign_up_view.dart';
+import 'package:developers_hub_task2/features/auth/presentation/widgets/auth_button.dart';
+import 'package:developers_hub_task2/features/auth/presentation/widgets/auth_link_text.dart';
+import 'package:developers_hub_task2/features/auth/presentation/widgets/password_field.dart';
+import 'package:developers_hub_task2/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
