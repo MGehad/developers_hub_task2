@@ -1,5 +1,6 @@
 import 'package:developers_hub_task2/features/auth/data/models/user_model.dart';
 import 'package:developers_hub_task2/features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
+import 'package:developers_hub_task2/features/posts/presentation/views/posts_view.dart';
 import 'package:developers_hub_task2/features/todo/presentation/views/todo_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -161,6 +162,36 @@ class HomeViewBody extends StatelessWidget {
                     icon: const Icon(Icons.arrow_forward_rounded),
                     label: const Text(
                       'Open ToDo App',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16),
+                SizedBox(
+                  height: 56,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF2563EB),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      elevation: 0,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PostsView(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.arrow_forward_rounded),
+                    label: const Text(
+                      'Open Posts API App',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,

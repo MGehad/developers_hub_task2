@@ -33,6 +33,16 @@ class LocalDatabase {
     await saveTasksList(tasks: tasks);
   }
 
+  static Future<void> updateTask({
+    required int index,
+    required String task,
+  }) async {
+    final List<String> tasks = getTasksList();
+    tasks[index] = task;
+
+    await saveTasksList(tasks: tasks);
+  }
+
   static Future<void> deleteTask(int index) async {
     List<String> tasks = getTasksList();
     tasks.removeAt(index);
