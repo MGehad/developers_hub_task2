@@ -86,13 +86,6 @@ class TodoView extends StatelessWidget {
               foregroundColor: Colors.black,
               elevation: 0,
               centerTitle: false,
-              actions: [
-                IconButton(
-                  onPressed: () => _showTaskDialog(context),
-                  icon: const Icon(Icons.add_rounded),
-                  color: Colors.indigo,
-                ),
-              ],
             ),
             backgroundColor: Colors.white,
             body: SafeArea(
