@@ -1,3 +1,4 @@
+import 'package:developers_hub_task2/features/home/presentation/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -5,6 +6,9 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: const SafeArea(child: HomeViewBody()),
+    );
   }
 }

@@ -10,4 +10,8 @@ class UserModel {
     required this.phone,
     required this.password,
   });
+
+  Map<String, dynamic> toJson() {
+    return {'email': email, 'name': name, 'phone': phone};
+  }
 }
