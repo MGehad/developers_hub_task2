@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276670612821",
+    "project_id": "developers-hub-2525",
+    "storage_bucket": "developers-hub-2525.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276670612821:android:077df28392c523f0b5dbdc",
+        "android_client_info": {
+          "package_name": "com.example.developers_hub_task2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFG__ATlFWIuPLbjeod9PD5l-tLTAHylI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
