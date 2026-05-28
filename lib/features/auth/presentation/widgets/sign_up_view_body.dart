@@ -21,7 +21,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   final _formKey = GlobalKey<FormState>();
   final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   late UserModel user;
@@ -30,7 +29,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   void dispose() {
     _fullNameController.dispose();
     _emailController.dispose();
-    _phoneController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
@@ -87,18 +85,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       autoValidateMode: AutovalidateMode.onUserInteraction,
                       textInputAction: TextInputAction.next,
                       autofillHints: const [AutofillHints.email],
-                    ),
-
-                    const SizedBox(height: 12),
-                    CustomInputField(
-                      controller: _phoneController,
-                      label: "Phone Number",
-                      hintText: "Enter your Phone Number",
-                      prefixIcon: Icons.phone_outlined,
-                      keyboardType: TextInputType.phone,
-                      validator: ValidationSettings.phoneValidator,
-                      autoValidateMode: AutovalidateMode.onUserInteraction,
-                      textInputAction: TextInputAction.next,
                     ),
 
                     const SizedBox(height: 12),
@@ -183,14 +169,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   void _getUserModel() {
     String name = _fullNameController.text.trim();
     String email = _emailController.text.trim();
-    String phoneNumber = _phoneController.text.trim();
     String password = _passwordController.text.trim();
 
-    user = UserModel(
-      name: name,
-      email: email,
-      phone: phoneNumber,
-      password: password,
-    );
+    user = UserModel(name: name, email: email, password: password);
   }
 }

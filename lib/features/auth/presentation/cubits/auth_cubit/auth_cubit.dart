@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:developers_hub_task2/core/services/Firebase/auth_service.dart';
+import 'package:developers_hub_task2/core/services/Firebase/firestore_service.dart';
 import 'package:developers_hub_task2/features/auth/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
@@ -13,10 +14,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signIn({required String email, required String password}) async {
     emit(AuthLoading());
     try {
-      final credential = await AuthRepo.signInWithEmailAndPassword(
-        email,
-        password,
-      );
+      await AuthRepo.signInWithEmailAndPassword(email, password);
 
       emit(AuthSuccess());
     } on FirebaseAuthException catch (e) {
@@ -33,12 +31,9 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signUp({required UserModel user}) async {
     emit(AuthLoading());
     try {
-      final credential = await AuthRepo.signUpWithEmailAndPassword(
-        user.email,
-        user.password,
-      );
+      await AuthRepo.signUpWithEmailAndPassword(user.email, user.password);
 
-      await AuthRepo.updateUserName(user.name);
+      await _addUser(user: user);
       emit(AuthSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -61,9 +56,25 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> _addUserData({required UserModel user}) async {
-    final db = FirebaseStorage.instance;
-    final ref = db.ref().child('users/${user.email}.json');
-    await ref.putString(user.toJson().toString());
+  Future<void> _addUser({required UserModel user}) async {
+    emit(AuthLoading());
+    await FirestoreRepo.createCollection(
+      collectionName: "users",
+      data: user.toJson(),
+    );
+  }
+
+  Future<void> getUserData() async {
+    emit(AuthLoading());
+    try {
+      final QuerySnapshot<Map<String, dynamic>> snapshot =
+          await FirestoreRepo.getData(collectionName: "users");
+      final List<UserModel> users = snapshot.docs
+          .map((e) => UserModel.fromJson(e.data()))
+          .toList();
+      emit(GetUserDataSuccess(users.first));
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
   }
 }
