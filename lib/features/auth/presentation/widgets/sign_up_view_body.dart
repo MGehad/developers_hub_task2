@@ -136,6 +136,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             color: Colors.red,
                           );
                         } else if (state is AuthSuccess) {
+                          ShowSnackBar.show(
+                            context,
+                            message: "Signed up successfully!",
+                            color: Colors.green,
+                          );
                           Navigator.pop(context);
                           Navigator.pushReplacement(
                             context,
